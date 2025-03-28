@@ -13,14 +13,15 @@ for i in range(1, N+1) :
         even -= 1
     print()
 
-
+odd = 4
+even = 3
 for i in range(1, N+1) :
     if i % 2 :
-        for _ in range(even):
+        for _ in range(odd-1):
             print("*", end=" ")
-        even -= 1
+        odd -= 1
     else :
-        for _ in range(odd):
+        for _ in range(even+1):
             print("*", end=" ")
-        odd += 1
+        even += 1
     print()
