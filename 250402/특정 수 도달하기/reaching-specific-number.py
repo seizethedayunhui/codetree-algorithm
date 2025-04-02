@@ -5,7 +5,7 @@ ans_list = []
 for i in range(len(num_list)) :
 
     # 만약 인덱스가 -1 이거나, 250 이상인 수가 나오면 즉시 break
-    if i == len(num_list) -1 or num_list[i] >= 250 :
+    if num_list[i] >= 250 :
         break
     # 앞의 조건을 만족하지 않는 경우 list에 append
     else:
