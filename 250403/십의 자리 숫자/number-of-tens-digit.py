@@ -3,6 +3,9 @@ num_list = list(map(int, input().split()))
 cnt_arr = [ 0 for _ in range(9) ]
 
 for num in num_list :
+
+    if not num :
+        break
     # 일의 자리 수 구하기
     ones = int(num // 10)
     if ones :
