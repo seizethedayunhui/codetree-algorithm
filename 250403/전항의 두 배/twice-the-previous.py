@@ -8,6 +8,6 @@ for i in range(10) :
     if i < 2 :
         print(num_list[i], end=" ")
     else :
-        ans = num_list[i-1] + v
+        ans = num_list[i-1] + 2 * num_list[i-2]
         num_list.append(ans)
         print(num_list[i], end=" ")
