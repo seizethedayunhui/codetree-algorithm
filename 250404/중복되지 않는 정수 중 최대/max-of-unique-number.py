@@ -8,22 +8,20 @@ prev_max_val = -1
 
 for num in num_list :
     
-    # 일단 최댓값
+    if num == max_val :
+        # 두번째로 큰 값
+        max_val = prev_max_val
+        if max_val in dup_list :
+            max_val = -1
+        continue
+
     if num > max_val :
-        max_val = num
-
-    elif num == max_val :
-        max_val = -1
-    
-       
-
-
-if max_val == float('-inf') :
-    print(-1)
-else :
-    print(max_val)
+        prev_max_val = max_val
+        max_val = num 
+    elif num > prev_max_val :
+        prev_max_val = num
+    dup_list.append(num)
     
 
-
     
-    
+print(max_val)
