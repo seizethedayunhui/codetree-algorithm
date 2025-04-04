@@ -1,8 +1,8 @@
 N = int(input())
 num_list = list(map(int, input().split()))
 
-max_1st = float('-inf')
-max_2nd = float('-inf')
+max_1st = num_list[0]
+max_2nd = num_list[0]
 
 for num in num_list :
     if num > max_1st :
