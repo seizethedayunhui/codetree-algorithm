@@ -13,8 +13,8 @@ len_sum = 0
 for word in word_list :
     if word[0] == char :
         cnt += 1
-    len_sum += len(word)
+        len_sum += len(word)
 
-word_len_avg = len_sum // N
+word_len_avg = len_sum / cnt
 
 print(f"{cnt} {word_len_avg:.2f}")
