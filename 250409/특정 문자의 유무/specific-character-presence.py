@@ -9,9 +9,9 @@ for i in range(len(string)-2) :
     for j in range(i, i+2) :
         ee_string += string[j]
         ab_string += string[j]
-    if ee_string.lower() == "ee":
+    if ee_string == "ee":
         ee_flag = True
-    if ab_string.lower() == "ab" :
+    if ab_string == "ab" :
         ab_flag = True
 
 if ee_flag :
