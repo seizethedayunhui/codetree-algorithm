@@ -5,5 +5,5 @@ for elem in string :
         print(elem, end="")
     elif ord(elem) >= 65 and ord(elem) <= 90 :
         print(chr(ord(elem)+32), end="")
-    elif ord(elem) >= 48 and ord(elem) <= 58 :
+    elif ord(elem) >= 48 and ord(elem) <= 57 :
         print(elem, end="")
