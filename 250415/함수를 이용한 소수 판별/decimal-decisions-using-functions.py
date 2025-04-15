@@ -5,6 +5,10 @@ prime_sum = 0
 def is_prime(n) :
 
     prime_flag = True
+
+    if n == 1 :
+        return False
+        
     for i in range(2, n) :
         if n % i == 0 :
             prime_flag = False
