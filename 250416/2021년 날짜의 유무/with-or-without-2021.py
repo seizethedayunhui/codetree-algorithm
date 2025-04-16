@@ -4,8 +4,9 @@ def is_exist_date(M, D) :
 
     if M >= 1 and M <= 12 :
 
-        if ( M == 2 ) and ( D >= 1 and D <= 28 ) :
-            return True
+        if ( M == 2 ) :
+            if ( D >= 1 and D <= 28 ) :
+                return True
         elif M <= 7 :
             if ( M % 2 ) and ( D >=1 and D <= 31 ) :
                 return True
