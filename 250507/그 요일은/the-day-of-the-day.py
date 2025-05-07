@@ -40,9 +40,10 @@ else :
 
 # 일단 나머지도 알아야할 듯
 # 어떻게 해야 할까.......................
+ans = ( diff // 7 )
+
 if diff >= 7 :
     if ( diff % 7 ) >= idx :
-        ans = (diff // 7) + 1
-else :
-    ans = ( diff // 7 )
+        ans += 1
+
 print(ans)
