@@ -6,7 +6,7 @@ d, h, m = 11, 11, 11
 
 while True:
     # 만약 주어진 시간이 더 이전인 경우
-    if A < 11 :
+    if A <= 11 :
         if B < 11 :
             if C < 11 :
                 print(-1)
