@@ -6,12 +6,11 @@ date_index = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 # 그렇다면 일로 계산했을 때 % 7 의 나머지가 0~6이면 월~일이 된다는 것임
 
 # 일단 더 빠른 날인 경우와 뒤의 날인 경우를 구분함
-if ( m2 <= m1 ):
-    if ( d2 <= d1):
-        start_m = m2
-        start_d = d2
-        end_m = m1
-        end_d = d1
+if ( m2 <= m1 and d2 <= d1):
+    start_m = m2
+    start_d = d2
+    end_m = m1
+    end_d = d1
 else :
     start_m = m1
     start_d = d1
