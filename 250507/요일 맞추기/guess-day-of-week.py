@@ -25,7 +25,7 @@ while True :
         break
 
     if (start_d >= date_index[start_m-1]):
-        start_d = 1
+        start_d = 0
         start_m += 1
 
     cnt += 1
