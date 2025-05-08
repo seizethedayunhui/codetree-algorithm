@@ -17,22 +17,27 @@ for _ in range(N) :
 
 for command in commands :
 
-    for i in range(command[0]+1) :
+    for i in range(command[0]) :
 
-        if commands[1] == "L" :
+        if command[1] == "L" :
             vertical[current - i] += 1
-
         else :
-            vertical[current + i] += 1
+            vertical[current + (i+1) ] += 1
+
+    if command[1] == "L" :
+        current -= command[0]
+    else :
+        current += command[0]
+        
+    
 
 cnt = 0
 
-for elem in vertical :
-
-    if elem >= 2 :
+for i in range(2001) :
+    if vertical[i] >= 2 :
         cnt += 1
 
-print(cnt-1)
+print(cnt)
 
 
 
