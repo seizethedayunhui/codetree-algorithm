@@ -11,5 +11,9 @@ while True :
         bit_N = str(N % 2) + bit_N
         N //= 2
 
-print(bit_N)
+if bit_N :
+    print(bit_N)
+else :
+    print(N)
+
 
