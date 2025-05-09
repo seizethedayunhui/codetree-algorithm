@@ -1,3 +1,5 @@
+import math
+
 # 첫번째 직사각형 정보
 x1, y1, x2, y2 = map(int, input().split())
 
@@ -44,6 +46,14 @@ for x in range(2001) :
             if y > end_y :
                 end_y = y
 
+
 ans = (end_y - start_y + 1) * (end_x - start_x + 1)
-print(ans)
+
+# 무한대가 아닌 경우에만 실행
+if not math.isinf(ans):
+    # value가 무한대가 아닐 때만 실행되는 코드
+    print(ans)
+else:
+    print(0)
+
 
