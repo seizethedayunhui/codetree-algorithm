@@ -10,12 +10,11 @@ for _ in range(N) :
     N_list.append(int(input()))
 
 
-cnt = 0
+cnt = 1 # 초기화 자체를 1로 해줌
 for i in range(N) :
     if i == 0 or (N_list[i] != N_list[i-1]) :
         if cnt > max_range :
             max_range = cnt
-        cnt = 1
     else :
         cnt += 1
 
