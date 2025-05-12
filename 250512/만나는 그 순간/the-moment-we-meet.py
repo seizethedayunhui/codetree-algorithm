@@ -39,11 +39,13 @@ for command in B_commands :
     if command[0] == 'L' :
         for i in range(command[1]) :
             B_current -= 1
-            B_move.append(A_current)
+            B_move.append(B_current)
+
     else :
         for i in range(command[1]) :
             B_current += 1
             B_move.append(B_current)
+
 
 meet_time = -1
 
