@@ -30,14 +30,19 @@ for command in commands :
     if memo[x][0] and memo[x][1] < K :
 
         # 감염된 사람끼리 만난 경우
-        memo[y][0] = 1
-        memo[y][1] += 1
+
+        if memo[y][0] :
+            memo[y][1] += 1
+        else :
+            memo[y][0] = 1
         memo[x][1] += 1
 
     elif memo[y][0] and memo[y][1] < K :
         # 감염된 사람끼리 만난 경우
-        memo[x][0] = 1
-        memo[x][1] += 1
+        if memo[x][0] :
+            memo[x][1] += 1
+        else :
+            memo[x][0] = 1
         memo[y][1] += 1     
 
 for elem in memo :
