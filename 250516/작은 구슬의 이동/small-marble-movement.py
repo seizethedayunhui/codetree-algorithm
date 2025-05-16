@@ -27,7 +27,7 @@ for _ in range(T) :
 
     # 범위를 벗어난 경우, 밤향 조절
     if not in_range(nx, ny, N) :
-        dir_num = ( dir_num + 1 ) % 3
+        dir_num = ( dir_num + 2 ) % 4
     else :
         x += dx[dir_num]
         y += dy[dir_num]
