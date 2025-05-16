@@ -38,13 +38,15 @@ for command in commands :
 
     for _ in range(command[1]) :
 
-        if time and ( x == 1000 and y == 1000 ) :
-            flag = True
-            break
-
         x += dx[idx]
         y += dy[idx]
         time += 1
+
+        # if 문이 가장 뒤에 있어야 하는 이유 : command[1] 길이의 가장 마지막에 조건이 달성될 수도 있기 때문에
+        # 무조건!!! x가 갱신 된 이후에 조건문!!
+        if time and ( x == 1000 and y == 1000 ) :
+            flag = True
+            break
 
 if flag :
     print(time)
