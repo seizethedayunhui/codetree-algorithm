@@ -33,7 +33,7 @@ elif K <= 3 * N :
     y = 3 * N - K
 else :
     direc_num = 0
-    x = 4 * n - K
+    x = 4 * N - K
     y = 0
 
 # 범위 확인 함수
