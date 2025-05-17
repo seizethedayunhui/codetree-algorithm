@@ -69,10 +69,9 @@ while True :
         direc_num = 4 - (direc_num + 1)
     else : 
         if direc_num % 2 :
-            direc_num += 1
-        else :
             direc_num -= 1
-
+        else :
+            direc_num += 1
     cnt += 1
     x += dx[direc_num]
     y += dy[direc_num]
