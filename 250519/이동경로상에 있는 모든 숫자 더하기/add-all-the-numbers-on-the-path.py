@@ -1,15 +1,11 @@
 N, T = map(int, input().split())
 
 command = list(input())
-
 cnt = 1
 
 mat = list()
 for _ in range(N) :
-    row = list()
-    for _ in range(N):
-        row.append(cnt)
-        cnt += 1
+    row = list(map(int, input().split()))
     mat.append(row)
 
 """
@@ -29,16 +25,13 @@ def in_range(x, y, N):
     return ( 0 <= x < N ) and ( 0 <= y < N ) 
 
 x, y = N // 2, N // 2
-ans = 0
+ans = mat[x][y]
 
 
 for elem in command :
-
-
     if elem == "L":
         # 왼쪽으로 90도 방향 전환
         direc_num = ( direc_num + 3 ) % 4
-
 
     elif elem == "R" :
         # 오른쪽으로 90도 방향 전환
@@ -50,15 +43,18 @@ for elem in command :
         ny = y + dy[direc_num]
 
         # 이동 자체를 하면 안됨
-        if not in_range(nx, ny, N):
-            continue
+        if in_range(nx, ny, N):
+            
+            x += dx[direc_num]
+            y += dy[direc_num]
+            ans += mat[x][y]
+            
 
-    ans += mat[x][y]
 
     
+
     
-    x += dx[direc_num]
-    y += dy[direc_num]
+
 
 
 print(ans)
