@@ -13,8 +13,9 @@ for i in range(len(A)) :
         for k in range(j+1, len(A)) :
             for l in range(k+1, len(A)) :
 
-                if A_list[i] == "(" and A_list[j] == "(" and A_list[k] == ")" and A_list[l] == ")" :
-                    cnt += 1
-                    print(i, j, k, l)
+                if abs(i-j) == 1  and abs(k-l) == 1 :
+                    if A_list[i] == "(" and A_list[j] == "(" and A_list[k] == ")" and A_list[l] == ")" :
+                        cnt += 1
+
 
 print(cnt)
