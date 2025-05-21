@@ -40,5 +40,8 @@ for i in range(N) :
             if check_sum_carry(nums[i], nums[j]) and check_sum_carry(nums[i]+nums[j], nums[k]) :
                 max_sum = max(max_sum, three_sum)
 
-print(max_sum)
+if max_sum :
+    print(max_sum)
+else :
+    print(-1)
 
