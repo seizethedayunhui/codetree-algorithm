@@ -20,8 +20,6 @@ def is_win_in_row(x, y, mat) :
         # 조건을 만족하지 않으면 바로 return
         if not(in_range(nx, ny, N) and mat[nx][ny] == mat[x][y]) :
             return False
-        else :
-            print(f"{x} {y} 에서 {nx} {ny}")
 
     return True
 
@@ -44,7 +42,7 @@ def is_win_in_diagonal(x, y, mat) :
     dy = [ 1, 2, 3, 4 ]
 
     for k in range(4) :
-        nx = x
+        nx = x + dx[k]
         ny = y + dy[k]
 
         if not(in_range(nx, ny, N) and mat[nx][ny] == mat[x][y]) :
