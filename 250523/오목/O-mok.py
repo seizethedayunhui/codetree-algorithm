@@ -36,9 +36,23 @@ def is_win_in_col(x, y, mat) :
     
     return True
 
-def is_win_in_diagonal(x, y, mat) :
+def is_win_in_diagonal1(x, y, mat) :
 
     dx = [ 1, 2, 3, 4 ]
+    dy = [ 1, 2, 3, 4 ]
+
+    for k in range(4) :
+        nx = x + dx[k]
+        ny = y + dy[k]
+
+        if not(in_range(nx, ny, N) and mat[nx][ny] == mat[x][y]) :
+            return False
+
+    return True
+
+def is_win_in_diagonal2(x, y, mat) :
+
+    dx = [ -1, -2, -3, -4 ]
     dy = [ 1, 2, 3, 4 ]
 
     for k in range(4) :
@@ -61,20 +75,22 @@ for x in range(N) :
         if (mat[x][y] > 0):
             # 세로로 이긴 경우
             if is_win_in_row(x, y, mat) :
-
                 ans_x = ( 2 * x + 4 ) // 2
                 ans_y = y
 
             # 가로로 이긴 경우 
             elif is_win_in_col(x, y, mat) :
-
                 ans_x = x
                 ans_y = ( 2 * y + 4 ) // 2
 
-            # 대각선으로 이긴 경우
-            elif is_win_in_diagonal(x, y, mat) :
-                
+            # 대각선으로 이긴 경우 1
+            elif is_win_in_diagonal1(x, y, mat) :
                 ans_x = ( 2 * x + 4 ) // 2
+                ans_y = ( 2 * y + 4 ) // 2
+
+            # 대각선으로 이긴 경우 2
+            elif is_win_in_diagonal2(x, y, mat) :
+                ans_x = ( 2 * x - 4 ) // 2
                 ans_y = ( 2 * y + 4 ) // 2
 
             else :
