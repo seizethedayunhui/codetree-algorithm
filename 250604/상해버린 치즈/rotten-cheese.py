@@ -45,17 +45,23 @@ for i in range(M) :
 
             for k in range(S) :
                 # 아프다는 정보가 주어진 경우
-                if sick_records[k]['p'] == records[j]['p'] and sick_records[k]['t'] > records[j]['t'] :
+                if sick_records[k]['p'] == records[j]['p']  :
+
+                    # 시간보다 이전에 아픈거면 cnt 되면 안되니까
                     sick_flag = True
-                    eat_idx.append(records[j]['p'])
-                    # print("먹고 아팠음", records[j]['p'], 1)
-                    cnt += 1
-                    break
+                    if sick_records[k]['t'] > records[j]['t'] :
+                        eat_idx.append(records[j]['p'])
+                        # print("먹고 아팠음", records[j]['p'], 1)
+                        cnt += 1
+                        break
             # 아프다는 정보가 주어지지 않은 경우엔 아플 수도 있으니 추가해줌
+            # 전에 아픈건데 추가될 수도 있음.
             if not sick_flag :
                 # print("먹긴했지만, 아픈지는 안나와있음: ", records[j]['p'], 2)
                 eat_idx.append(records[j]['p'])
                 cnt += 1
+    eat_idx.sort()
+    #print(eat_idx)
    
 
     max_medicine = max(max_medicine, cnt)
