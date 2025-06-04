@@ -29,10 +29,12 @@ for i in range(N) :
             price_sum += price_list[j]
 
         # 범위 벗어나는 경우 break, 아닌 경우 학생 수 증가
-        if price_sum >= B :
+        if price_sum > B :
             break
         else :
             cnt += 1
+            if price_sum == B :
+                break
 
     max_students = max(max_students, cnt)
 
