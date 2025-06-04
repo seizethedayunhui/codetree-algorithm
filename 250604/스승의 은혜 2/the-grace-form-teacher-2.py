@@ -7,6 +7,8 @@ for _ in range(N) :
     price = int(input())
     price_list.append(price)
 
+# 가장 많은 학생들에게 선물을 사주어야 하기 때문에, 원하는 선물의 가격이 작은 값부터 넣어주어야 최대한 많은 학생들에게 선물을 사줄 수 있음. 
+price_list.sort(lambda x : x)
 
 # 출력값
 max_students = float('-inf')
@@ -24,7 +26,7 @@ for i in range(N) :
 
         if ( i == j ) :
             # i -> 50퍼 할인 받는 학생
-            price_sum += (price_list[j] / 2) 
+            price_sum += (price_list[j] // 2) 
         else :
             price_sum += price_list[j]
 
