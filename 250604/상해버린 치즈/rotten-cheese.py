@@ -54,7 +54,9 @@ for i in range(M) :
             # 아프다는 정보가 주어지지 않은 경우엔 아플 수도 있으니 추가해줌
             if not sick_flag :
                 # print("먹긴했지만, 아픈지는 안나와있음: ", records[j]['p'], 2)
+                eat_idx.append(records[j]['p'])
                 cnt += 1
+   
 
     max_medicine = max(max_medicine, cnt)
 
