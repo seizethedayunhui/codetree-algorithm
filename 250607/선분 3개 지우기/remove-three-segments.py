@@ -8,9 +8,9 @@ for _ in range(N) :
     lines.append(line)
 
 cnt = 0
-for i in range(N-3) :
-    for j in range(i, N) :
-        for k in range(j, N) :
+for i in range(N-2) :
+    for j in range(i+1, N) :
+        for k in range(j+1, N) :
 
             records = [ 0 for _ in range(101) ]
 
@@ -21,6 +21,7 @@ for i in range(N-3) :
                         records[m] += 1
 
             flag = True
+            # print(records)
             for record in records :
                 if record >= 2 :
                     flag = False
