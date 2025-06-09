@@ -26,8 +26,6 @@ for i in range(3) :
         if cups[c-1] :
             cnt += 1
 
-    if cnt > max_cnt :
-        max_cnt = cnt
-        idx = i+1
+    max_cnt = max(max_cnt, cnt)
 
-print(idx)    
+print(max_cnt)    
