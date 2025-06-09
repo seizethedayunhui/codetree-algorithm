@@ -4,8 +4,9 @@ min_diff = float('inf')
 
 for i in range(N) :
 
-    remaining_arr = list()
     for j in range(N) :
+
+        remaining_arr = list()
 
         if i == j :
             continue
@@ -16,10 +17,10 @@ for i in range(N) :
             elif k != j :
                 remaining_arr.append(elem)
 
-    diff = 0
-    for l in range(N-2) :
-        diff += abs(remaining_arr[l] - remaining_arr[l+1])
+        diff = 0
+        for l in range(N-2) :
+            diff += abs(remaining_arr[l] - remaining_arr[l+1])
     
-    min_diff = min(min_diff, diff)
+        min_diff = min(min_diff, diff)
 
 print(min_diff)
