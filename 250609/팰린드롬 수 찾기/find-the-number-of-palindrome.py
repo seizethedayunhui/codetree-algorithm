@@ -10,7 +10,7 @@ def num_to_list(n) :
     return num_list
 
 cnt = 0
-for n in range(X, Y) :
+for n in range(X, Y+1) :
 
     num_list = num_to_list(n)
     flag = True
