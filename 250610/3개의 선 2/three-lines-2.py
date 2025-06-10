@@ -9,10 +9,7 @@ cnt = 0
 for i in range(11) :
     for j in range(11) :
         for k in range(11) :
-            
-            # 같은 것이 있는 경우 break
-            if ( i == j ) or ( j == k ) or ( k == i ) :
-                continue
+
 
             # 1. 모두 x축에 평행한 경우
             cnt1 = 0
