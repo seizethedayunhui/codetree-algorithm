@@ -20,12 +20,14 @@ def horizontal(x, y, mat) :
             break
 
     digit_cnt = 0
+    digit_list = list()
     if flag :
-        for digit in digits :
+        for idx, digit in enumerate(digits) :
             if digit :
                 digit_cnt += 1
+                digit_list.append(idx)
 
-    return digit_cnt
+    return digit_cnt, digit_list
 
 # 세로
 def vertical(x, y, mat) :
@@ -44,12 +46,14 @@ def vertical(x, y, mat) :
             break
 
     digit_cnt = 0
+    digit_list = list()
     if flag :
-        for digit in digits :
+        for idx, digit in enumerate(digits) :
             if digit :
                 digit_cnt += 1
+                digit_list.append(idx)
 
-    return digit_cnt
+    return digit_cnt, digit_list
 
 # 대각선
 def diagonal1(x, y, mat) :
@@ -69,12 +73,14 @@ def diagonal1(x, y, mat) :
             break
 
     digit_cnt = 0
+    digit_list = list()
     if flag :
-        for digit in digits :
+        for idx, digit in enumerate(digits) :
             if digit :
                 digit_cnt += 1
+                digit_list.append(idx)
 
-    return digit_cnt
+    return digit_cnt, digit_list
 
 def diagonal2(x, y, mat) :
 
@@ -93,18 +99,41 @@ def diagonal2(x, y, mat) :
             break
 
     digit_cnt = 0
+    digit_list = list()
     if flag :
-        for digit in digits :
+        for idx, digit in enumerate(digits) :
             if digit :
                 digit_cnt += 1
+                digit_list.append(idx)
 
-    return digit_cnt      
+    return digit_cnt, digit_list 
+    
             
 cnt = 0
+couples = list()
 for i in range(3) :
     for j in range(3) :
-        if horizontal(i, j, mat) == 2 or vertical(i, j, mat) == 2 or diagonal1(i, j, mat) == 2 or diagonal2(i, j, mat) == 2:
-            cnt += 1
+
+        result1, couple1 = horizontal(i, j, mat) 
+        result2, couple2 = vertical(i, j, mat) 
+        result3, couple3 = diagonal1(i, j, mat)
+        result4, couple4 = diagonal2(i, j, mat)
+        if result1 == 2 :
+            if couple1 not in couples :
+                couples.append(couple1)
+                cnt += 1
+        if result2 == 2 :
+            if couple2 not in couples :
+                couples.append(couple2)
+                cnt += 1
+        if result3 == 2 :
+            if couple3 not in couples :
+                couples.append(couple3)
+                cnt += 1
+        if result4 == 2 :
+            if couple4 not in couples :
+                couples.append(couple4)
+                cnt += 1
 
 print(cnt)
     
