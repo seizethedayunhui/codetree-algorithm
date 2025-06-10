@@ -118,22 +118,31 @@ for i in range(3) :
         result2, couple2 = vertical(i, j, mat) 
         result3, couple3 = diagonal1(i, j, mat)
         result4, couple4 = diagonal2(i, j, mat)
-        if result1 == 2 :
-            if couple1 not in couples :
-                couples.append(couple1)
+
+        results = [[result1, couple1], [result2, couple2], [result3, couple3], [result4, couple4]]
+        # if result1 == 2 :
+        #     if couple1 not in couples :
+        #         couples.append(couple1)
+        #         cnt += 1
+        # if result2 == 2 :
+        #     if couple2 not in couples :
+        #         couples.append(couple2)
+        #         cnt += 1
+        # if result3 == 2 :
+        #     if couple3 not in couples :
+        #         couples.append(couple3)
+        #         cnt += 1
+        # if result4 == 2 :
+        #     if couple4 not in couples :
+        #         couples.append(couple4)
+        #         cnt += 1
+
+        for result in results :
+            if result[0] == 2 and (result[1] not in couples) :
                 cnt += 1
-        if result2 == 2 :
-            if couple2 not in couples :
-                couples.append(couple2)
-                cnt += 1
-        if result3 == 2 :
-            if couple3 not in couples :
-                couples.append(couple3)
-                cnt += 1
-        if result4 == 2 :
-            if couple4 not in couples :
-                couples.append(couple4)
-                cnt += 1
+                couples.append(result[1])
+
+        
 
 print(cnt)
     
