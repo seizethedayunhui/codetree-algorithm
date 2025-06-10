@@ -1,6 +1,7 @@
 N = int(input())
 string = [ elem for elem in input() ]
-find_flag = False
+
+len_cnt = [ [ 0 for _ in range(N+1) ] for _ in range(N) ]
 
 # 시작 위치 고정
 for i in range(N) :
@@ -15,13 +16,21 @@ for i in range(N) :
             if string[k:k+(j-i)] == partial :
                 current_cnt += 1
 
-        if current_cnt == 1 :
-            find_flag = True
-            min_len = (j - i)
+        # 카운트 처리 
+        len_cnt[i][j-i] += current_cnt
+
+
+for col in range(1, N+1) :
+
+    flag = True
+    for row in range(N) :
+        if len_cnt[row][col] >= 2 :
+            flag = False
             break
-    if find_flag :
+    # 찾았으면 바로 print
+    if flag :
+        print(col)
         break
 
-print(min_len)
 
 
