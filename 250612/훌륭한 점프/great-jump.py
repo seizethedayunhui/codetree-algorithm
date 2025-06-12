@@ -4,7 +4,7 @@ arr = list(map(int, input().split()))
 
 min_value = float('inf')
 # 최댓값 인덱스
-for i in range(1, N-1) :
+for i in range(1, N) :
     max_idx = i
     current_idx = 0
     end_idx = N - 1
@@ -25,6 +25,7 @@ for i in range(1, N-1) :
     if flag :
         points.sort(reverse = True)
         min_value = min(min_value, points[0])
+    
 
 print(min_value)
 
