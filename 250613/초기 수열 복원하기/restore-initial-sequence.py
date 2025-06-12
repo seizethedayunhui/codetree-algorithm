@@ -21,7 +21,7 @@ for i in range(1, N + 1) :
     for elem in partial :
 
         # 현재 갑이 한 번도 등장하지 않은 경우
-        if elem - prev_elem >= 1 and (digits[elem - prev_elem] != 1):
+        if elem - prev_elem <= N and elem - prev_elem >= 1 and (digits[elem - prev_elem] != 1):
             prev_elem = (elem - prev_elem)
             digits[prev_elem] = 1          
             picks.append(prev_elem)
