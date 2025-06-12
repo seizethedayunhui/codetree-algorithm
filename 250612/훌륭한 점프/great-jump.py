@@ -10,17 +10,15 @@ for i in range(1, N-1) :
     end_idx = N - 1
 
     flag = False
-    points = list()
+    points = [arr[0]]
 
     for j in range(1, N) :
-
 
         if j - current_idx <= K and arr[j] <= arr[max_idx] :
             points.append(arr[j])
             current_idx = j
 
         if current_idx == end_idx :
-            points.pop()
             flag = True
             break
 
