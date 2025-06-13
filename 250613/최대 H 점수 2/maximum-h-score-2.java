@@ -39,16 +39,16 @@ public class Main {
                     cnt++;
                 }
             }
-
-            // H 이상인 수가 H 이상인 것을 만족하는 경우
-            if ( cnt >= j && cnt >= maxCnt ){
-                maxValue = Math.max(maxValue, j);
-                // System.out.println(maxValue +", "+cnt);
+ 
+            // H 이상인 수가 H 이상인 것을 만족하는 경우 중에서 큰 값.
+            if ( cnt >= j ){
+                maxValue = Math.max(maxValue, j);            
             }
 
             // 원래대로 돌리기
-            for (int idx : picks){
-                arr[idx] -= 1;
+            // iter 값 사용하지 마라... 제발
+            for (int n = 0; n < idxCnt ; n++){
+                arr[picks[n]] -= 1;
             }
 
         }
