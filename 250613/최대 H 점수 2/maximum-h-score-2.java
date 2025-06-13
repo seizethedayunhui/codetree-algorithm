@@ -17,7 +17,7 @@ public class Main {
         int maxCnt = 0;
         int maxValue = 0;
 
-        for(int j = 0; j < N ; j++){
+        for(int j = 1; j <= 100 ; j++){
             
             // 픽하는 것의 개수 구하기
             int idxCnt = 0;
@@ -25,11 +25,8 @@ public class Main {
 
             for (int k = 0; k < N ; k++){
 
-                if ( j == k ){
-                    continue;
-                }
 
-                if (idxCnt < L && arr[k] + 1 == arr[j]){
+                if (idxCnt < L && arr[k] + 1 == j ){
                     picks[idxCnt] = k;
                     arr[k] += 1; // 일단 값을 추가해줌.
                     idxCnt++;
@@ -38,20 +35,22 @@ public class Main {
 
             int cnt = 0;
             for(int l = 0; l < N; l++){
-                if (arr[l] >= arr[j]){
+                if (arr[l] >= j ){
                     cnt++;
                 }
             }
 
             // H 이상인 수가 H 이상인 것을 만족하는 경우
-            if ( cnt >= arr[j] && cnt >= maxCnt ){
-                maxValue = Math.max(maxValue, arr[j]);
+            if ( cnt >= j && cnt >= maxCnt ){
+                maxValue = Math.max(maxValue, j);
+                // System.out.println(maxValue +", "+cnt);
             }
 
             // 원래대로 돌리기
             for (int idx : picks){
                 arr[idx] -= 1;
             }
+
         }
 
         System.out.print(maxValue);
