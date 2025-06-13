@@ -30,6 +30,10 @@ public class Main {
             // 터지는 경우를 메모
             for (int k = 0; k < N ; k++){
 
+                if ( j == k ){
+                    continue;
+                }
+
                 if (bombs[j]==bombs[k] && Math.abs(j-k) <= K){
                     flag = true;
                     // 터진 것을 기록함. 
@@ -39,10 +43,12 @@ public class Main {
 
                 
         }
-
+        // for (int elem : records){
+        //     System.out.println(elem);
+        // }
 
         if (flag){
-
+            
             for (int l = 0; l < N ; l++){
 
                 if (records[l] == 1) {
@@ -61,14 +67,12 @@ public class Main {
                             maxCnt = cnt;
                     }
 
-                        
                     }
                 }
                 
             }
+        }
 
         System.out.print(maxBombNum);
-        
-        }
     }
 }
