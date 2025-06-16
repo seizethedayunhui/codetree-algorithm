@@ -14,7 +14,7 @@ for line in lines :
 
 flag = False
 for record in records :
-    if record >= 2 :
+    if record >= N :
         flag = True
         break
 
