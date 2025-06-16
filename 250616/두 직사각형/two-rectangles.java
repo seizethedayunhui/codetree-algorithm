@@ -21,7 +21,7 @@ public class Main {
 
         boolean flag = false;
 
-        if ((x2 < a1) || (a2 < x1)){
+        if ((x2 < a1) || (a2 < x1) || (y2 < b1) || (b2 < y1)){
             flag = true;
         }
 
