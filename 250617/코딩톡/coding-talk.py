@@ -9,9 +9,16 @@ for _ in range(M) :
 members = [ chr(i + 65) for i in range(N)]
 
 exist_members = list()
-for i in range(p-1, M) :
-    exist_members.append(messages[i][0])
 
+# 모두 읽은 경우 exist_members에 모두 포함시킴. 
+if messages[p-1][1] > 0 :
+    for i in range(p-1, M) :
+        exist_members.append(messages[i][0])
+else :
+    for i in range(N) :
+        exist_members.append(chr(i + 65))
+
+# 읽지 않은 멤버들을 찾아내는 리스트
 not_read_members = list()
 for member in members :
     flag = False
@@ -23,6 +30,7 @@ for member in members :
     if not flag :
         not_read_members.append(member)
 
+# 출력
 for member in not_read_members :
     print(member, end=" ")
 
