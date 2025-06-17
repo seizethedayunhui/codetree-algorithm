@@ -12,8 +12,13 @@ exist_members = list()
 
 # 모두 읽은 경우 exist_members에 모두 포함시킴. 
 if messages[p-1][1] > 0 :
-    for i in range(p-1, M) :
-        exist_members.append(messages[i][0])
+    for i in range(M) :
+        # 읽은 사람 수는 같은데 보낸 사람이 다른 경우 그 사람이 나갔음을 알 수 있음. 
+        if i < p-1 :
+            if messages[i][1] == messages[p-1][1] and messages[i][0] != messages[p-1][0] :
+                exist_members.append(messages[i][0])
+        elif i >= p-1 :
+            exist_members.append(messages[i][0])
 else :
     for i in range(N) :
         exist_members.append(chr(i + 65))
