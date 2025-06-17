@@ -6,9 +6,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        int[] birds = new int[N];
+        int[] birds = new int[11];
 
-        for(int i = 0; i < N; i++){
+        for(int i = 0; i < 11; i++){
             birds[i] = -1;
         }
 
@@ -18,11 +18,11 @@ public class Main {
             int location = sc.nextInt();
 
             // 움직임이 발생되기 전
-            if (birds[bird -1] < 0){
-                birds[bird -1] = location;
-            } else if (birds[bird - 1] != location){
+            if (birds[bird] < 0){
+                birds[bird] = location;
+            } else if (birds[bird] != location){
                 cnt += 1;
-                birds[bird - 1] = location;
+                birds[bird] = location;
             }
         }
 
