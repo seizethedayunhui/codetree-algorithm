@@ -11,10 +11,10 @@ public class Main {
 
         int[][] jumps = { {x, y}, {y, x} };
 
-        int minDis = Integer.MAX_VALUE;
+        int minDis = Math.abs(A-B);
+
         for(int i = 0; i < 2; i++){
 
-            int currentDis = 0;
             boolean jumpFlag = false;
 
             int direct = 0;
@@ -28,17 +28,23 @@ public class Main {
                 direct = 1;
             }; 
 
-            
+
             int j = A;
+            int currentDis = 0;
+
             while( j != B) {
                 
                 if (jumps[i][0] == j && !jumpFlag ){
                     j = jumps[i][1];
                     jumpFlag = true;
 
-                    if (direct < 0){
+                    // 이동한 위치에 따라서 이동 방향 조정
+                    if ( j > B ){
+                        direct = -1;
+                    } else {
                         direct = 1;
                     }
+
                 } else {
                     j += direct;
                     currentDis += 1;
