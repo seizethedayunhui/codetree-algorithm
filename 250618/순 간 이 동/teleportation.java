@@ -28,7 +28,9 @@ public class Main {
                 direct = 1;
             }; 
 
-            for (int j = A; j < B; ){
+            
+            int j = A;
+            while( j != B) {
                 
                 if (jumps[i][0] == j && !jumpFlag ){
                     j = jumps[i][1];
