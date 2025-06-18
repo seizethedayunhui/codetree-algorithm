@@ -2,7 +2,7 @@ location = list(map(int, input().split()))
 location.sort() 
 
 cnt = 0
-gap = float('inf')
+gap = abs(location[1]-location[0]) + abs(location[2]-location[1])
 
 while (gap != 2) :
 
