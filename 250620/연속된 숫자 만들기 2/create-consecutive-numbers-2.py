@@ -2,7 +2,7 @@ location = list(map(int, input().split()))
 location.sort() 
 
 cnt = 0
-flag = (location[1] - location[0] == 1) and (location[2] - location[1] == 0)
+flag = (location[1] - location[0] == 1) and (location[2] - location[1] == 1)
 
 while not flag :
 
