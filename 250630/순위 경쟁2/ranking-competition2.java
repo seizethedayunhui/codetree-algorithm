@@ -27,13 +27,11 @@ public class Main {
 
                 if (scoreA > scoreB){
                     currentWinner = "A";
-                } else if (scoreA == scoreB) {
-                    currentWinner = "Both";
-                } else {
+                    cnt += 1;
+                } else if (scoreA < scoreB) {
                     currentWinner = "B";
-                }
-
-                cnt += 1;
+                    cnt += 1;
+                } 
 
             } else if ( currentWinner.equals("Both")){
 
