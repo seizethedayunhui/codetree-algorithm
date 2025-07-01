@@ -41,22 +41,38 @@ public class Main {
    
 
         int cnt = 0;
-        while(startX <= endX && startY <= endY){
+        while (true) {
 
             int nextX, nextY;
 
             if (startX == endX){
-                nextX = startX;
-                nextY = startY + 1;             
+
+                if (startY > endY){
+                    nextX = startX;
+                    nextY = startY - 1;                   
+                } else {
+                    nextX = startX;
+                    nextY = startY + 1; 
+                }
+
             } else {
+
                 nextX = startX + 1;
                 nextY = startY;
+
             }
 
 
             if (mat[nextX][nextY].equals("R") ){
-                nextX = startX;
-                nextY = startY + 1;
+
+                if (startX == endX){
+                    nextX = startX + 1;
+                    nextY = startY;
+                } else {
+                    nextX = startX;
+                    nextY = startY + 1;
+                }
+
             }
 
             startX = nextX;
