@@ -1,0 +1,78 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        String[][] mat = new String[10][10];
+
+        for(int i = 0; i < 10; i++){
+
+            String input = sc.next();
+            for(int j = 0; j < 10; j++){
+                 mat[i][j] = String.valueOf(input.charAt(j)); // char → String 변환
+            }
+        }
+
+        int startX = 0;
+        int startY = 0;
+        int endX = 0;
+        int endY = 0;
+
+        boolean startFlag = false;
+
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+
+                if ( mat[i][j].equals("L") || mat[i][j].equals("B")){
+                    if(!startFlag){
+                        startX = i;
+                        startY = j;
+                        startFlag = true;
+                    } else {
+                        endX = i;
+                        endY = j;
+                    }
+                }
+
+            }
+        }
+   
+
+        int cnt = 0;
+        while(startX <= endX && startY <= endY){
+
+            int nextX, nextY;
+
+            if (startX == endX){
+                nextX = startX;
+                nextY = startY + 1;             
+            } else {
+                nextX = startX + 1;
+                nextY = startY;
+            }
+
+
+            if (mat[nextX][nextY].equals("R") ){
+                nextX = startX;
+                nextY = startY + 1;
+            }
+
+            startX = nextX;
+            startY = nextY;
+
+            // System.out.println(startX + ", " + startY);
+
+            // 목적지에 도착한 경우를 처리해주기 위해서는 if - else문을 가장 마지막에 추가해주어야 함.
+            if (startX == endX && startY == endY){
+                break;
+            } else {
+                cnt += 1;
+            }
+        }
+
+        System.out.println(cnt);
+        
+    }
+}
