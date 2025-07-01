@@ -19,21 +19,26 @@ public class Main {
         int posNum2 = Integer.MIN_VALUE;
         int posNum3 = Integer.MIN_VALUE;
 
+        int posIdx1 = 0;
+        int posIdx2 = 0;
+
         for (int i = 0; i < 3; i++){
 
             if (i == 0){
                 for (int j = 0; j < N; j++){
                     posNum1 = Math.max(posNum1, arr[j]);
+                    posIdx1 = j;
                 }
             } else if (i == 1){
                 for (int j = 0; j < N; j++){             
-                    if (arr[j] < posNum1 && arr[j] > posNum2 ){
+                    if (arr[j] <= posNum1 && arr[j] > posNum2 && j != posIdx1){
                         posNum2 = arr[j];
+                        posIdx2 = j;
                     }
                 }
             } else {
                 for(int j = 0; j < N ; j++){
-                    if (arr[j] < posNum1 && arr[j] < posNum2 && arr[j] > posNum3){
+                    if (arr[j] <= posNum1 && arr[j] <= posNum2 && arr[j] > posNum3 && posIdx1 != j && posIdx2 != j ){
                         posNum3 = arr[j];
                     }
                 }
@@ -47,19 +52,22 @@ public class Main {
         int negNum1 = Integer.MAX_VALUE;
         int negNum2 = Integer.MAX_VALUE;
 
+        int negIdx1 = 0;
+
         for (int i = 0; i < 2; i++){
 
             if (i == 0){
                 for (int j = 0; j < N; j++){
                     if (arr[j] < 0){
                         negNum1 = Math.min(negNum1, arr[j]);
+                        negIdx1 = j;
                     }
                 }
             } else {
                 for(int j = 0; j < N ; j++){
 
                     if (arr[j] < 0){
-                        if (arr[j] > negNum1 && arr[j] < negNum2){
+                        if (arr[j] >= negNum1 && arr[j] < negNum2 && negIdx1 != j){
                             negNum2 = arr[j];
                         }
                     }
