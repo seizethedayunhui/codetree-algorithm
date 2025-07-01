@@ -41,7 +41,7 @@ for _ in range(N) :
     elif B_score == C_score and B_score > A_score :
         current_ranking = ["B", "C"]
     # A = B = C
-    elif A_score == B_score and B_score == C_score :
+    elif A_score == B_score and B_score == C_score and len(ranking) :
         current_ranking = ["A", "B", "C"]
 
     # 개수를 먼저 비교, 그리고 안의 원소 비교
