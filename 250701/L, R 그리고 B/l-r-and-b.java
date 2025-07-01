@@ -55,6 +55,17 @@ public class Main {
                     nextY = startY + 1; 
                 }
 
+            } else if (startX > endX) {
+                
+                if (startY == endY){
+
+                    nextX = startX - 1;
+                    nextY = startY;
+                } else {
+                    nextX = startX;
+                    nextY = startY + 1;
+                }
+
             } else {
 
                 nextX = startX + 1;
@@ -78,7 +89,6 @@ public class Main {
             startX = nextX;
             startY = nextY;
 
-            // System.out.println(startX + ", " + startY);
 
             // 목적지에 도착한 경우를 처리해주기 위해서는 if - else문을 가장 마지막에 추가해주어야 함.
             if (startX == endX && startY == endY){
