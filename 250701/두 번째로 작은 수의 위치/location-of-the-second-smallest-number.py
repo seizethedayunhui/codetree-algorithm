@@ -21,6 +21,9 @@ for j in range(N) :
     if arr[j] > min_num and arr[j] < second_num :
         second_num = arr[j]
         second_idx = j
+        # 바뀌면 초기화 해주어야함. 
+        cnt = 0
+
 
 # 두번째로 큰 수가 여러 개인 경우 & 두번째로 큰 수 자체가 존재하지 않는 경우
 if cnt or (second_idx < 0) :
