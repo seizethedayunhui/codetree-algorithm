@@ -3,11 +3,21 @@ n, m = map(int, input().split())
 arr = list(map(int, input().split()))
 
 start_point = 0
+cnt = 0
 
-for i in range(1, n + 1) :
+while (start_point < n) :
 
-    if ( (m * 2 + 1) * i >= n ) :
-        ans = i
-        break
+    # 완벽한 스타트 포인트 결정
+    for i in range(start_point, n) :
+        if arr[i] :
+            start_point = i
+            break
 
-print(ans)
+    cnt += 1
+
+    next_point = start_point + (2 * m  + 1)
+    start_point = next_point
+
+
+
+print(cnt)
