@@ -3,16 +3,21 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        // 원리 : max1에서 max2를 뺸값은 max1 && max2가 아닌 값으로 옮겨주는 것을 반복하는 방식. 
+        // 원리 : max값을 찾아서, 그 max값에서 평균값에 미치지 못한 값들에게 max값의 일부를 떼어주는 방식.
+        // 단, 평균 -max, 평균 - 해당값 중 작은 값을 더해주는 것이 key point !
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
 
         int[] arr = new int[N];
+        int arrSum = 0;
 
         for(int i = 0; i < N; i++){
             arr[i] = sc.nextInt();
+            arrSum += arr[i];
         }
+
+        int arrAvg = (int) arrSum / N;
 
         boolean flag = false;
 
@@ -22,36 +27,29 @@ public class Main {
         while(!flag){
 
             int firstMax = Integer.MIN_VALUE;
-            int secondMax = Integer.MIN_VALUE;
 
             int firstIdx = -1;
-            int secondIdx = -1;
 
             for(int i = 0; i < N; i++){
 
-                // first MAX값과 second MAX 값을 구해줌. 
-                if(arr[i] > firstMax && arr[i] > secondMax){
-
-                    secondMax = firstMax;
+                // first MAX값 
+                if(arr[i] > firstMax){
                     firstMax = arr[i];
-
-                    secondIdx = firstIdx;
                     firstIdx = i;
-
-                } else if (arr[i] < firstMax  && arr[i] > secondMax ){
-                    secondMax = arr[i];
-                    secondIdx = i;
-                }
+                } 
             }
 
-            // System.out.println("현재 max1, max2 = " + firstMax + ", " + secondMax);
 
             for(int j = 0; j < N ; j++){
-                if ( j != firstIdx && j != secondIdx && arr[j] != firstMax && arr[j] != secondMax ){
-                    arr[j] += Math.abs(arr[firstIdx] - arr[secondIdx]);
-                    arr[firstIdx] -= Math.abs(arr[firstIdx] - arr[secondIdx]);
-                    cnt += Math.abs(firstMax - secondMax);
-                    break;
+
+                if ( j != firstIdx && arr[j] < arrAvg ){
+
+                    int amount = Math.min(Math.abs(arrAvg - arr[j]) , Math.abs(arrAvg - arr[firstIdx]));
+                    cnt += amount;
+                    arr[j] += amount;
+                    arr[firstIdx] -= amount;
+                    break; 
+
                 }
             }
 
