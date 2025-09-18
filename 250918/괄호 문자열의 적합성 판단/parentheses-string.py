@@ -4,9 +4,9 @@ idx = 0
 for element in input_str :
     if element == "(" :
         idx += 1
-    else :
+    elif idx :
         idx -= 1
-    
+
 if not idx :
     print("Yes")
 else :
