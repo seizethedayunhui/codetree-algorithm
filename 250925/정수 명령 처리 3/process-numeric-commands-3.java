@@ -20,7 +20,7 @@ public class Main {
             } else if (command.equals("size")){
                 System.out.println(dq.size());
             } else if (command.equals("empty")){
-                int ans = (command.isEmpty()) ? 1 : 0;
+                int ans = (dq.isEmpty()) ? 1 : 0;
                 System.out.println(ans);
             } else if (command.equals("front")){
                 System.out.println(dq.peekFirst());
