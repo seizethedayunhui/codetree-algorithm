@@ -28,36 +28,45 @@ public class Main {
 
             // 연속해서 M개 이상 나와야함. 
             for(int col = 1; col < N; col++){
+
+                // M개 보다 많이 나온 경우 cnt + 1
                 // 이전 원소랑 같은 경우
                 if (mat[row][col] == currentElement){
                     currentCnt += 1;
                 } else {
                     currentCnt = 1;
-                    currentElement = mat[row][col];
                 }
-            }
-            // M개 보다 많이 나온 경우 cnt + 1
-            if (currentCnt >= M){
-                cnt += 1;
+
+                if (currentCnt >= M){
+                    cnt += 1;
+                    break;
+                }
+
+                currentElement = mat[row][col];
             }
         }
 
+    
 
         for (int col = 0; col < N; col++){
             int currentCnt = 1;
             int currentElement = mat[0][col];
 
             for(int row = 1; row < N; row++){
+
+
                 if(mat[row][col] == currentElement){
                     currentCnt += 1;
                 } else{
                     currentCnt = 1;
-                    currentElement = mat[row][col];
                 }
-            }
 
-            if(currentCnt >= M){
-                cnt += 1;
+                if(currentCnt >= M){
+                    cnt += 1;
+                    break;
+                }
+                
+                currentElement = mat[row][col];
             }
         }
         
