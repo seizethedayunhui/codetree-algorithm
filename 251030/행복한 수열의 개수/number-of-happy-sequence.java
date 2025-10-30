@@ -23,11 +23,11 @@ public class Main {
 
         for(int row = 0; row < N; row++){
 
-            int currentCnt = 1; // 0번을 원소로 넣음. 
+            int currentCnt = 0; // 0번을 원소로 넣음. 
             int currentElement = mat[row][0];
 
             // 연속해서 M개 이상 나와야함. 
-            for(int col = 1; col < N; col++){
+            for(int col = 0; col < N; col++){
 
                 // M개 보다 많이 나온 경우 cnt + 1
                 // 이전 원소랑 같은 경우
@@ -49,10 +49,11 @@ public class Main {
     
 
         for (int col = 0; col < N; col++){
-            int currentCnt = 1;
+            int currentCnt = 0;
             int currentElement = mat[0][col];
 
-            for(int row = 1; row < N; row++){
+
+            for(int row = 0; row < N; row++){
 
 
                 if(mat[row][col] == currentElement){
@@ -65,7 +66,7 @@ public class Main {
                     cnt += 1;
                     break;
                 }
-                
+
                 currentElement = mat[row][col];
             }
         }
