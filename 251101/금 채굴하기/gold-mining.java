@@ -22,12 +22,11 @@ public class Main {
         for(int x = 0 ; x < N; x++){
             for(int y = 0 ; y < N; y++){
                 // 점마다 계산
-                for(int k = N-1; k > 0; k--){
+                for(int k = 2 * N - 1; k > 0; k--){
 
                     int expense = (k * k) + (k+1)*(k+1); // 비용 먼저 계산
                     int income = 0;
                     int currentCnt = 0;
-
 
 
                     for( int row = 0; row < 2 * k + 1; row++){
@@ -64,7 +63,7 @@ public class Main {
                     if((income > expense) && currentCnt >= maxCnt ){
 
                         maxCnt = currentCnt;
-                        //System.out.println("K: " + k + ", (x, y): " + x  +", " + y + " cnt: " + currentCnt + ", amount:" + (income - expense));
+                        // System.out.println("K: " + k + ", (x, y): " + x  +", " + y + " cnt: " + currentCnt + ", amount:" + (income - expense));
                     }
 
                 }
