@@ -30,7 +30,7 @@ public class Main {
                         // 현재 (x, y)에서 i×j 사각형 검사
                         for (int k = 0; k < i; k++) {
                             for (int l = 0; l < j; l++) {
-                                if (mat[x + k][y + l] < 0) {
+                                if (mat[x + k][y + l] <= 0) {
                                     flag = false;
                                     break;
                                 }
