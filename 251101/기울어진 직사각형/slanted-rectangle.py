@@ -39,21 +39,35 @@ for x in range(N) :
                 cx, cy = x, y
                 current_sum = 0
 
+                # print("시작: ", x, y)
+                flag = True
+
                 for i in range(4) :
                     if not i % 2 :
                         for _ in range(r1 + 1) :
                             current_sum += mat[cx][cy]
                             cx += dx[i]
                             cy += dy[i]
+                            if not in_range(cx, cy, N) :
+                                flag = False
+                                break
+                            # print(f"(x, y) = ({cx}, {cy}), current_cnt = {current_sum}")
                     else :
                         for _ in range(r2 + 1) :
                             current_sum += mat[cx][cy]
                             cx += dx[i]
-                            cy += dy[i]                           
-            
-                max_sum = max(max_sum, current_sum)
+                            cy += dy[i]  
+                            if not in_range(cx, cy, N) :
+                                flag = False
+                                break
+
+                if flag :
+                    max_sum = max(max_sum, current_sum)
+                else : 
+                    break
 
 print(max_sum)
+
 
 
 
