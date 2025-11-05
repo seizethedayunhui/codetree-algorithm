@@ -13,14 +13,14 @@ y = move[1] - 1
 moving = move[2:6]
 direc = move[6]
 
-# 방향 저장
-# 시계 방향의 경우
-dx1 = [ -1, -1, 1,  1]
-dy1 = [ -1,  1, 1, -1]
-
-# 반시계 방향의 경우
-dx2 = [ -1 , -1, 1, 1]
-dy2 = [  1,  -1,-1, 1]
+if direc :
+    dx = [ -1, -1, 1,  1]
+    dy = [ -1,  1, 1, -1]
+    order = [3, 2, 1, 0]
+else :
+    dx = [ -1 , -1, 1, 1]
+    dy = [  1,  -1,-1, 1]
+    order = [0, 1, 2, 3]
 
 # 꼭짓점 저장
 pointX = [x]
@@ -30,13 +30,14 @@ pointY = [y]
 currentX = x 
 currentY = y
 
+for i in range(3) :
+    currentX += dx[i] * moving[order[i]]
+    currentY += dy[i] * moving[order[i]]
+    pointX.append(currentX)
+    pointY.append(currentY)
+
 # 시계 방향
 if direc :
-    for i in range(3) :
-        currentX += dx1[i] * moving[3-i]
-        currentY += dy1[i] * moving[3-i]
-        pointX.append(currentX)
-        pointY.append(currentY)
 
     # 1번 방향
     currentX = pointX[1]
@@ -84,12 +85,6 @@ if direc :
 
 # 반시계 방향
 else :
-
-    for i in range(0, 3) :
-        currentX += dx2[i] * moving[i]
-        currentY += dy2[i] * moving[i]
-        pointX.append(currentX)
-        pointY.append(currentY)
 
     # 1번 방향
     currentX = pointX[1]
