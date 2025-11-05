@@ -46,7 +46,7 @@ public class Main {
         int minLength = Integer.MAX_VALUE;
 
 
-        for(int i = 0; i < N-1; i++){
+        for(int i = 0; i < N; i++){
 
             char temp = A.charAt(N-1);
             A = String.valueOf(temp) + A.substring(0, N-1); // shift 한 문자열
