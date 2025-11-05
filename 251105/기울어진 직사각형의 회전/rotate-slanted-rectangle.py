@@ -36,99 +36,29 @@ for i in range(3) :
     pointX.append(currentX)
     pointY.append(currentY)
 
-# 시계 방향
-if direc :
+for i in range(4) :
 
-    # 1번 방향
-    currentX = pointX[1]
-    currentY = pointY[1]
+    point_idx = (i+1) % 4
 
-    for _ in range(moving[3]) :
-        temp[currentX][currentY] = mat[currentX+1][currentY+1]
-        currentX += 1
-        currentY += 1
-    # 1번 이동 후엔 갱신하지 않음
+    currentX = pointX[point_idx]
+    currentY = pointY[point_idx]
 
-    # 2번 방향 이동
-    currentX = pointX[2]
-    currentY = pointY[2]
-    for _ in range(moving[2]-1) :
-        temp[currentX][currentY] = mat[currentX+1][currentY-1]
-        currentX += 1
-        currentY -= 1
-    
-    # 첫번쨰 갱신
-    temp[currentX][currentY] = mat[pointX[1]][pointY[1]]
-    # print(currentX, currentY, pointX[3], pointY[3], mat[pointX[3]][pointY[3]])
+    d_idx = (point_idx + 1) % 4
 
-    # 3번 방향 이동
-    currentX = pointX[3]
-    currentY = pointY[3]
-    for _ in range(moving[1]-1) :
-        temp[currentX][currentY] = mat[currentX-1][currentY-1]
-        currentX -= 1
-        currentY -= 1
-    
-    # 두번째 갱신
-    temp[currentX][currentY] = mat[pointX[2]][pointY[2]]
+    temp_idx = (point_idx + 3) % 4
 
-    # 4번 방향 이동
-    currentX = pointX[0]
-    currentY = pointY[0]
-    for _ in range(moving[0]-1) :
-        temp[currentX][currentY] = mat[currentX-1][currentY+1]
-        currentX -= 1
-        currentY += 1
-    
-    # 세번째 갱신
-    temp[currentX][currentY] = mat[pointX[3]][pointY[3]]
+    for _ in range(moving[order[i]]-1) :
 
-# 반시계 방향
-else :
+        nx = currentX + dx[d_idx]
+        ny = currentY + dy[d_idx]
 
-    # 1번 방향
-    currentX = pointX[1]
-    currentY = pointY[1]
+        temp[currentX][currentY] = mat[nx][ny]
+        
+        currentX = ny
+        currentY = nx
 
-    for _ in range(moving[0]) :
-        temp[currentX][currentY] = mat[currentX+1][currentY-1]
-        currentX += 1
-        currentY -= 1
-    # 1번 이동 후엔 갱신하지 않음
+    temp[currentX][currentY] = mat[pointX[temp_idx]][pointY[temp_idx]]
 
-    # 2번 방향 이동
-    currentX = pointX[2]
-    currentY = pointY[2]
-    for _ in range(moving[1]-1) :
-        temp[currentX][currentY] = mat[currentX+1][currentY+1]
-        currentX += 1
-        currentY += 1
-    
-    # 첫번쨰 갱신
-    temp[currentX][currentY] = mat[pointX[1]][pointY[1]]
-    # print(currentX, currentY, pointX[1], pointY[1], mat[pointX[1]][pointY[1]])
-
-    # 3번 방향 이동
-    currentX = pointX[3]
-    currentY = pointY[3]
-    for _ in range(moving[2]-1) :
-        temp[currentX][currentY] = mat[currentX-1][currentY+1]
-        currentX -= 1
-        currentY += 1
-    
-    # 두번째 갱신
-    temp[currentX][currentY] = mat[pointX[2]][pointY[2]]
-
-    # 4번 방향 이동
-    currentX = pointX[0]
-    currentY = pointY[0]
-    for _ in range(moving[3]-1) :
-        temp[currentX][currentY] = mat[currentX-1][currentY-1]
-        currentX -= 1
-        currentY -= 1
-    
-    # 세번째 갱신
-    temp[currentX][currentY] = mat[pointX[3]][pointY[3]]
 
 # temp 값을 mat에 복사
 for x in range(N) :
