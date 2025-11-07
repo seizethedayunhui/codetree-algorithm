@@ -52,13 +52,18 @@ public class Main {
             }
             for(int row = 0; row < 4; row++){
                 for(int i = startIdx; i != endIdx; ){
-                    if(temp[row][i]==0){
-                        temp[row][i] = temp[row][i+d];
-                        temp[row][i+d] = 0;
-                    }
 
                     if(temp[row][i] == temp[row][i+d]){
                         temp[row][i] += temp[row][i+d];
+                        temp[row][i+d] = 0;
+                    }
+                    i += d;
+                }
+            }
+            for(int row = 0; row < 4; row++){
+                for(int i = startIdx; i != endIdx; ){
+                    if(temp[row][i]==0){
+                        temp[row][i] = temp[row][i+d];
                         temp[row][i+d] = 0;
                     }
                     i += d;
@@ -81,15 +86,22 @@ public class Main {
 
             for(int col = 0; col < 4; col++){
                 for(int j = startIdx; j != endIdx; ){
-                    if(temp[j][col]==0){
-                        temp[j][col] = temp[j+d][col];
-                        temp[j+d][col] = 0;
-                    }
 
                     if (temp[j][col] == temp[j+d][col]){
                         temp[j][col] += temp[j+d][col];
                         temp[j+d][col] = 0;
                     }
+                    j += d;
+                }
+            }
+            
+            for(int col = 0; col < 4; col++){
+                for(int j = startIdx; j != endIdx; ){
+                    if(temp[j][col]==0){
+                        temp[j][col] = temp[j+d][col];
+                        temp[j+d][col] = 0;
+                    }
+
                     j += d;
                 }
             }
