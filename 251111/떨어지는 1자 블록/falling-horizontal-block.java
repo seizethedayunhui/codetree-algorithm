@@ -16,18 +16,19 @@ public class Main {
             }
         }
 
-        boolean flag = false;
-        for(int x = 0; x < N; x++){
+        boolean flag;
+        for(int x = N-1; x > -1; x--){
+            flag = true;
             for(int y = K; y < K + M; y++){
-                if (mat[x][y] == 1){
-                    flag = true;
+                if (mat[x][y] != 0){
+                    flag = false;
                     break;
                 }
             }
 
             if (flag){
                 for(int y = K; y < K + M; y++){
-                    mat[x-1][y] = 1;
+                    mat[x][y] = 1;
                 }
                 
                 break;
