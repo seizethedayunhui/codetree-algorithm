@@ -38,6 +38,7 @@ for x in range(N) :
                         if temp[row2][col] :
                             temp[row][col] = temp[row2][col]
                             temp[row2][col] = 0
+                            break
 
         # for j in range(N) :
         #     for k in range(N) :
