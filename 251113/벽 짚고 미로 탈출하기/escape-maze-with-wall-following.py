@@ -19,26 +19,6 @@ for _ in range(N) :
 def in_range(x, y) :
     return 0 <= x < N and 0 <= y < N
 
-# 사방이 막혔는지 확인하는 함수 
-def is_possible(x, y, direc) :
-
-    right_direc = (direc + 1) % 4
-    left_direc = (direc + 3) % 4
-
-    nx = x + dx[direc]
-    ny = y + dy[direc]
-
-    right_nx = x + dx[right_direc]
-    right_ny = y + dy[right_direc]
-
-    left_nx = x + dx[left_direc]
-    left_ny = y + dy[left_direc]
-
-    if mat[left_nx][left_ny] == "#" and mat[right_nx][right_ny] == "#" and mat[nx][ny] == "#":
-        return False
-    
-    return True
-
 dx = [ 0, 1, 0, -1]
 dy = [ 1, 0, -1, 0]
 
@@ -56,6 +36,8 @@ while in_range(nx, ny):
 
     nx += dx[direc]
     ny += dy[direc]
+
+    # print(x, y)
     
     # 한 번만 더 이대로 이동하면 탈출하는 경우
     if not in_range(nx, ny) :
@@ -89,18 +71,12 @@ while in_range(nx, ny):
 
     else :
 
-        if not is_possible(nx, ny, direc) :
-            flag = False
-            break 
-        else :
-            direc = (direc + 3) % 4
+        direc = (direc + 3) % 4
 
     # 처음의 위치로 돌아온 경우 탈출할 수 없다는 의미이므로 break
-    if not direc and (nx == start_x and ny == start_y) :
+    if not direc and (x == start_x and y == start_y) :
         flag = False
         break
-  
-
 
 
 if flag :
