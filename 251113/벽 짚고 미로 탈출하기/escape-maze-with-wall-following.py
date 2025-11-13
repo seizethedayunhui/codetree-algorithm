@@ -28,10 +28,15 @@ time = 0
 nx, ny = x, y
 
 
-while True:
+while in_range(nx, ny):
 
     nx += dx[direc]
     ny += dy[direc]
+    
+    # 한 번만 더 이대로 이동하면 탈출하는 경우
+    if not in_range(nx, ny) :
+        time += 1
+        break
 
     if mat[nx][ny] == "." :
 
@@ -42,9 +47,6 @@ while True:
         if mat[right_x][right_y] == "#" :
             # 이동
             time += 1
-            # 범위 벗어나면 탈출했다는 의미
-            if not in_range(nx, ny) :
-                break
         else :
             # 일단 이동 -> nx, ny
             time += 1
@@ -54,16 +56,11 @@ while True:
                 
             # 방향 전환
             direc = (direc + 1) % 4
-
             # 한번 더 이동
             time += 1
             nx += dx[direc]
             ny += dy[direc]
 
-            # 범위 벗어나면 탈출했다는 의미
-            if not in_range(nx, ny) :
-                break
-    
     else :
         direc = (direc + 3) % 4
 
@@ -71,6 +68,7 @@ while True:
     if not direc and (nx == x and ny == y) :
         flag = False
         break
+
 
 
 if flag :
