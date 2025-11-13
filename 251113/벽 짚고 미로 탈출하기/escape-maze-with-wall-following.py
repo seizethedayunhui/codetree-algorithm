@@ -4,6 +4,8 @@ x, y = map(int, input().split())
 x -= 1
 y -= 1
 
+start_x, start_y = x, y
+
 mat = list()
 
 for _ in range(N) :
@@ -37,7 +39,6 @@ def is_possible(x, y, direc) :
     
     return True
 
-
 dx = [ 0, 1, 0, -1]
 dy = [ 1, 0, -1, 0]
 
@@ -49,8 +50,9 @@ time = 0
 
 nx, ny = x, y
 
-
 while in_range(nx, ny):
+
+    nx, ny = x, y
 
     nx += dx[direc]
     ny += dy[direc]
@@ -62,36 +64,39 @@ while in_range(nx, ny):
 
     if mat[nx][ny] == "." :
 
-        next_drec = (direc + 1) % 4
-        right_x = nx + dx[next_drec]
-        right_y = ny + dy[next_drec]
+        # 일단 무조건 이동함. 
+        time += 1
+        x, y = nx, ny
 
-        if mat[right_x][right_y] == "#" :
-            # 이동
-            time += 1
-        else :
-            # 일단 이동 -> nx, ny
-            time += 1
-            # 범위 벗어나면 탈출했다는 의미
-            if not in_range(nx, ny) :
-                break
-                
+        next_drec = (direc + 1) % 4
+        nx = x + dx[next_drec]
+        ny = y + dy[next_drec]
+
+        if not in_range(nx, ny) :
+            next_drec = (direc + 1) % 4
+            nx = x + dx[next_drec]
+            ny = y + dy[next_drec]
+
+        elif not mat[nx][ny] == "#" :
             # 방향 전환
             direc = (direc + 1) % 4
             # 한번 더 이동
             time += 1
-            nx += dx[direc]
-            ny += dy[direc]
+            nx = x + dx[direc]
+            ny = y + dy[direc]
+
+            x, y = nx, ny
 
     else :
 
         if not is_possible(nx, ny, direc) :
             flag = False
-            break  
-        direc = (direc + 3) % 4
+            break 
+        else :
+            direc = (direc + 3) % 4
 
     # 처음의 위치로 돌아온 경우 탈출할 수 없다는 의미이므로 break
-    if not direc and (nx == x and ny == y) :
+    if not direc and (nx == start_x and ny == start_y) :
         flag = False
         break
   
