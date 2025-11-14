@@ -51,7 +51,7 @@ public class Main {
         // 모두 0으로 초기화
         int[][] mat = new int[N][N];
         for(int i = 0; i < N; i++){
-            for(int j = 0; j < M; j++){
+            for(int j = 0; j < N; j++){
                 mat[i][j] = 0;
             }
         }
