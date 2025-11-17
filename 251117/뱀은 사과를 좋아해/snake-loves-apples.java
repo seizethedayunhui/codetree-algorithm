@@ -70,14 +70,10 @@ public class Main {
                     flag = false;
                     break;
                 }
-
-                // 자기 몸과 충돌
-                if (snake[nx][ny] == 1) {
-                    flag = false;
-                    break;
-                }
-
-                // head 이동 직전 기록
+                                    // head 이동
+                headX = nx;
+                headY = ny;
+                
                 prevPoints.add(new int[]{headX, headY});
 
                 // 사과가 없는 경우 tail 이동
@@ -95,9 +91,11 @@ public class Main {
                     apples[nx][ny] = 0;
                 }
 
-                // head 이동
-                headX = nx;
-                headY = ny;
+                // 자기 몸과 충돌
+                if (snake[nx][ny] == 1) {
+                    flag = false;
+                    break;
+                }
                 snake[headX][headY] = 1;
             }
 
