@@ -86,17 +86,7 @@ public class Main {
                     } 
                 }
                 
-                // 2단계: 충돌 확인 및 최종 상태 업데이트 (O(N^2) + O(M))
-                
-                // 충돌 지점 좌표 저장 (k, l)
-                ArrayList<int[]> collisionPoints = new ArrayList<>();
-                for(int k = 0; k < N; k++){
-                    for(int l = 0; l < N; l++){
-                        if (nextMat[k][l] >= 2){
-                            collisionPoints.add(new int[]{k, l});
-                        }
-                    }
-                }
+
                 
                 // 충돌 구슬 비활성화 (O(M))
                 // M개의 구슬을 순회하며, 그 구슬이 충돌 지점에 있는지 확인
