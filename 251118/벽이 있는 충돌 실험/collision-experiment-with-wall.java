@@ -56,7 +56,7 @@ public class Main {
             int x, y, nx, ny;
             int currentDirec;
 
-            while (time < 100){
+            while (time < 50){
                 
                 for(int m = 0; m < M; m++){
 
