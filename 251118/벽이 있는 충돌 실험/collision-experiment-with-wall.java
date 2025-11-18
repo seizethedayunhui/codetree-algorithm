@@ -54,11 +54,12 @@ public class Main {
             }
 
 
+
             int time = 0;
             int x, y, nx, ny;
             int currentDirec;
             
-            while (time < 25){
+            while (time < 2*N){
                 
                 for(int m = 0; m < M; m++){
 
