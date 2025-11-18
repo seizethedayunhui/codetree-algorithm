@@ -5,6 +5,7 @@ public class Main {
     public static boolean inRange(int x, int y, int N){
         return x >= 0 && x < N && y >= 0 && y < N;
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -18,7 +19,6 @@ public class Main {
             int[] directions = new int[M];
             int[][] points = new int[M][2];
             boolean[] flags = new boolean[M];
-            int[] direcCnt = { 0, 0, 0, 0};
 
             int[] dx = { 0, 1, 0, -1};
             int[] dy = { 1, 0, -1, 0};
@@ -51,22 +51,14 @@ public class Main {
                 }
                 directions[m] = direction;
                 flags[m] = true;
-                direcCnt[direction]++;
             }
 
-            for (int c : direcCnt){
-                if (c == M){
-                    System.out.println(M);
-                    continue;
-                }
-            }
 
             int time = 0;
             int x, y, nx, ny;
             int currentDirec;
             
-
-            while (time < 100){
+            while (time < 25){
                 
                 for(int m = 0; m < M; m++){
 
