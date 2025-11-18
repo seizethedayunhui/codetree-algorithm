@@ -18,7 +18,6 @@ public class Main {
             int[][] mat = new int[N][N];
             int[] directions = new int[M];
             int[][] points = new int[M][2];
-            boolean[] flags = new boolean[M];
 
             int[] dx = { 0, 1, 0, -1};
             int[] dy = { 1, 0, -1, 0};
@@ -50,23 +49,20 @@ public class Main {
                     direction = 3;
                 }
                 directions[m] = direction;
-                flags[m] = true;
             }
-
-
 
             int time = 0;
             int x, y, nx, ny;
             int currentDirec;
             
-            while (time < 2*N){
+            while (time < 100){
                 
                 for(int m = 0; m < M; m++){
 
-                    if (flags[m]){
-
                         x = points[m][0];
                         y = points[m][1];
+
+                    if (mat[x][y] != 0){
 
                         currentDirec = directions[m];
 
@@ -95,18 +91,10 @@ public class Main {
 
                 for(int k = 0; k < N; k++){
                     for(int l = 0; l < N; l++){
-                        if (mat[k][l] >= 2){
-                            // System.out.println("2개 이상 겹쳐진 곳 " + k +", " + l);
-                            for(int j = 0; j < M; j++){
-                                if (points[j][0] == k && points[j][1] == l){
-                                    flags[j] = false;
-                                }
-                            }
-
-                            mat[k][l] = 0;
-                        }
+                        if (mat[k][l] >= 2) mat[k][l] = 0;
                     }
                 }
+
                 time++;
             }
 
