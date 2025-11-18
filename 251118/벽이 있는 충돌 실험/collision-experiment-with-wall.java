@@ -1,4 +1,7 @@
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
 
 public class Main {
 
@@ -8,18 +11,22 @@ public class Main {
     }
 
     // 메인 로직
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException { // I/O 예외 처리 필수
+        // 🚨 Scanner 대신 BufferedReader와 StringTokenizer 사용
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
 
-        int T = sc.nextInt();
+        st = new StringTokenizer(br.readLine());
+        int T = Integer.parseInt(st.nextToken());
 
         // 테스트 케이스 루프
         for (int t = 0; t < T; t++){
             
-            int N = sc.nextInt();
-            int M = sc.nextInt();
+            st = new StringTokenizer(br.readLine());
+            int N = Integer.parseInt(st.nextToken());
+            int M = Integer.parseInt(st.nextToken());
 
-            // mat 대신, points와 flags 배열만으로 시뮬레이션 상태를 관리
+            // ... (배열 선언 생략)
             int[] directions = new int[M];
             int[][] points = new int[M][2];
             boolean[] flags = new boolean[M];
@@ -30,8 +37,11 @@ public class Main {
 
             // 초기 입력 및 상태 설정
             for(int m = 0; m < M; m++){
-                int i = sc.nextInt();
-                int j = sc.nextInt();
+                st = new StringTokenizer(br.readLine()); // 매 줄마다 새로운 StringTokenizer
+                
+                int i = Integer.parseInt(st.nextToken());
+                int j = Integer.parseInt(st.nextToken());
+                String direc = st.nextToken();
 
                 i--; j--; // 0-based 인덱스로 변환
 
@@ -39,7 +49,6 @@ public class Main {
                 points[m][1] = j;
                 flags[m] = true;
 
-                String direc = sc.next();
                 int direction;
                 if (direc.equals("R")){
                     direction = 0;
@@ -54,15 +63,14 @@ public class Main {
             }
 
             int time = 0;
-            // 문제 조건에 따라 시간 제한을 설정합니다. (예: 2*N, 1000 등)
+            // 시간 루프
             while (time < 2 * N){ 
                 
                 // 1단계: 모든 구슬의 다음 위치 계산 및 충돌 카운트 (O(M) + O(N^2))
-                // 다음 시간 스텝의 위치별 구슬 개수를 세는 임시 배열
                 int[][] nextMat = new int[N][N]; 
                 
                 for(int m = 0; m < M; m++){
-                    if (!flags[m]) continue; // 소멸된 구슬은 건너뜀
+                    if (!flags[m]) continue;
 
                     int x = points[m][0];
                     int y = points[m][1];
@@ -72,35 +80,39 @@ public class Main {
                     int ny = y + dy[currentDirec];
 
                     if (inRange(nx, ny, N)){
-                        // (1-1) 다음 위치로 이동
+                        // 다음 위치로 이동
                         points[m][0] = nx;
                         points[m][1] = ny;
-                        nextMat[nx][ny] += 1; // 새 위치에서 충돌 카운트 증가
+                        nextMat[nx][ny] += 1;
 
                     } else {
-                        // (1-2) 벽에 부딪힘: 방향만 반대로 바꾸고 현재 위치 유지
+                        // 벽에 부딪힘: 방향만 반대로 바꾸고 현재 위치 유지
                         currentDirec = (currentDirec + 2) % 4;
                         directions[m] = currentDirec;
-                        nextMat[x][y] += 1; // 현재 위치에서 충돌 카운트 증가
-                        // points[m]은 그대로 유지
+                        nextMat[x][y] += 1;
                     } 
                 }
                 
-
+                // 2단계: 충돌 확인 및 최종 상태 업데이트 (O(M))
                 
+                // 🚨 불필요한 collisionPoints 생성 코드 제거
+                /*
+                for(int k = 0; k < N; k++){
+                    for(int l = 0; l < N; l++){
+                        if (nextMat[k][l] >= 2){
+                            collisionPoints.add(new int[]{k, l});
+                        }
+                    }
+                }
+                */
+
                 // 충돌 구슬 비활성화 (O(M))
-                // M개의 구슬을 순회하며, 그 구슬이 충돌 지점에 있는지 확인
                 for(int m = 0; m < M; m++){
                     if (flags[m]){
                         int x = points[m][0];
                         int y = points[m][1];
                         
-                        // 충돌 리스트에 현재 구슬의 위치가 있는지 확인
-                        // (충돌 리스트가 크지 않다면 O(N^2) < 50*50 = 2500 이므로 선형 탐색도 가능)
-                        // 하지만 최악의 경우를 대비하여 Set을 사용하는 것이 가장 좋음.
-                        // 여기서는 로직 단순화를 위해 충돌 좌표를 HashSet으로 관리하는 최적 코드를 제시합니다.
-                        
-                        // 충돌 구슬 비활성화는 1단계에서 얻은 nextMat 정보로만 진행됩니다.
+                        // nextMat 배열의 값만 확인하여 비활성화
                         if (nextMat[x][y] >= 2) {
                             flags[m] = false;
                         }
