@@ -56,7 +56,7 @@ public class Main {
             int x, y, nx, ny;
             int currentDirec;
 
-            while (time < 100){
+            while (time < 2*N){
                 
                 for(int m = 0; m < M; m++){
 
@@ -64,6 +64,11 @@ public class Main {
 
                         x = points[m][0];
                         y = points[m][1];
+
+                        if (mat[x][y] == 0){
+                            flags[m] = false;
+                            continue;
+                        }
 
                         currentDirec = directions[m];
 
@@ -96,12 +101,6 @@ public class Main {
                             // System.out.println("2개 이상 겹쳐진 곳 " + k +", " + l);
                             mat[k][l] = 0;
                         }
-                    }
-                }
-
-                for(int j = 0; j < M; j++){
-                    if (mat[points[j][0]][points[j][1]] == 0){
-                        flags[j] = false;
                     }
                 }
 
