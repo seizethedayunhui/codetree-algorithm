@@ -28,7 +28,6 @@ for num in nums :
     y = points[num-1][1]
 
     maxElement = 0
-    nx, ny = x,y
 
     find_flag = False
     for i in range(8) :
@@ -63,9 +62,12 @@ for num in nums :
     mat[cx][cy] = sorted(ans[cx][cy], reverse = True)[0]
 
     if len(ans[x][y]) >= 1 :
-        mat[x][cy] = sorted(ans[x][y], reverse = True)[0]
+        mat[x][y] = sorted(ans[x][y], reverse = True)[0]
     else :
         mat[x][y] = -1
+    # for row in ans :
+    #     print(row)
+    # print()
 
 
 for row in ans :
