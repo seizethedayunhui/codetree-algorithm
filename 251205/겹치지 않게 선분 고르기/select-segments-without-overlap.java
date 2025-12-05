@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Main {
     public static int N;
-    public static int[] record = new int[1000];
+    public static int[] record = new int[1001];
     public static int[][] points;
 
     public static int ans;
@@ -16,7 +16,6 @@ public class Main {
             if (record[j] != 0){
                 //System.out.println("들어옴2");
                 flag = false;
-                break;
             } else {
                 record[j] += 1;
             }
@@ -36,6 +35,7 @@ public class Main {
         if (idx >= N){
             // return 현재까지의 선분 cnt값
             ans = Math.max(ans, cnt);
+            // System.out.println(ans + ", " + cnt);
             return;
         }
         
@@ -44,18 +44,14 @@ public class Main {
 
         //System.out.println("현재 좌표"+ ": "+ left+ ", " + right);
 
-        idx++;
         // 넣는지 파악
         if (addRecord(left, right)){
-            cnt++;
-            cntLines(idx, N, cnt);
-            removeRecord(left, right);
-            // 갯수도 제거해줘야함. 
-            cnt--;
+            cntLines(idx + 1, N, cnt + 1);
         }
-
+        removeRecord(left, right);
         // 안 넣는다
-        cntLines(idx, N, cnt);
+        cntLines(idx + 1, N, cnt);
+        
 
     }
 
