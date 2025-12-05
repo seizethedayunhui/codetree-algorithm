@@ -13,12 +13,11 @@ public class Main {
 
         for(int j = l; j <= r; j++){
             //System.out.println(record[j] + ", " + j);
-            if (record[j] != 0){
+            if (record[j] == 1){
                 //System.out.println("들어옴2");
                 flag = false;
-            } else {
-                record[j] += 1;
-            }
+            } 
+            record[j] += 1;
         }
         return flag;
     }
