@@ -10,10 +10,11 @@ public class Main {
     public static boolean addRecord(int l, int r){
 
         boolean flag = true;    
-        System.out.println("들어옴2");
 
         for(int j = l; j <= r; j++){
+            //System.out.println(record[j] + ", " + j);
             if (record[j] != 0){
+                //System.out.println("들어옴2");
                 flag = false;
                 break;
             } else {
@@ -30,27 +31,31 @@ public class Main {
     }
 
     public static void cntLines(int idx, int N, int cnt){
-        System.out.println("들어옴");
+        //System.out.println("들어옴");
         
         if (idx >= N){
             // return 현재까지의 선분 cnt값
             ans = Math.max(ans, cnt);
-            
             return;
         }
         
         int left = points[idx][0];
         int right = points[idx][1];
 
+        //System.out.println("현재 좌표"+ ": "+ left+ ", " + right);
+
+        idx++;
         // 넣는지 파악
         if (addRecord(left, right)){
-            cntLines(idx++, N, cnt++);
+            cnt++;
+            cntLines(idx, N, cnt);
             removeRecord(left, right);
-            
+            // 갯수도 제거해줘야함. 
+            cnt--;
         }
 
         // 안 넣는다
-        cntLines(idx++, N, cnt);
+        cntLines(idx, N, cnt);
 
     }
 
@@ -60,8 +65,8 @@ public class Main {
        
        points = new int[N][2];
        for(int i = 0; i < N; i++){
-            int l = sc.nextInt();
-            int r = sc.nextInt();
+            int l = sc.nextInt() - 1;
+            int r = sc.nextInt() - 1;
             points[i][0] = l;
             points[i][1] = r;
        }
