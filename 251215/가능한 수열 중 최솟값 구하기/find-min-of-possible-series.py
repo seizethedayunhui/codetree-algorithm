@@ -21,28 +21,23 @@ def check_all_condi(s, s_max_length, s_current_length) :
 # idx - 길이 인덱스
 # length 검사 중인 길이
 def check_condi(s, start, idx, length) :
-
-    if idx == length :
+    if (s[start : start + length] == s[start + length : start + 2 * length]) :
         return False
-
-    if (s[start + idx] == s[start + length + idx]) :
-        return check_condi(s, start, idx+1, length)
     else :
         return True
 
 def make_seq(idx, s) :
+    
+    if len(s) % 2 :
+        s_length = len(s) // 2 + 1
+    else :
+        s_length = len(s) // 2
+
+    if not check_all_condi(s, s_length, 1)  :
+        return
 
     if idx == N :
-        #print(s)
-    
-        if len(s) % 2 :
-            s_length = len(s) // 2 + 1
-        else :
-            s_length = len(s) // 2
-
-        if check_all_condi(s, s_length, 1) :
-            seq.append(s)
-        #seq.append(s)
+        seq.append(s)
         return
 
     for i in range(4, 7) :
