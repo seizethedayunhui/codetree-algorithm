@@ -9,55 +9,52 @@ public class Main {
     public static int[] dx = { -1, -1, 0, 1, 1, 1, 0, -1 };
     public static int[] dy = { 0, 1, 1, 1, 0, -1, -1, -1 };
 
-    public static ArrayList<Integer> arr = new ArrayList<>();
+    public static ArrayList<Integer> arr = new ArrayList<Integer>();
 
-    public static int moves(int x, int y, ArrayList arr){
+    public static int moves(int x, int y, ArrayList<Integer> arr){
 
-        if(!inRange(x, y, N)){
-            return arr.size();
-        }
-
-        if (arr.size() > 0 && (int) arr.get(arr.size()-1) >= numsMat[x][y]) {
-            System.out.println("탐색종료");
-            for(int i = 0; i < arr.size(); i++){
-                System.out.print(arr.get(i) + " ");
-            }
-            System.out.println();
-            //System.out.println("(x, y) " + x + ", " + y + " 현재: " + numsMat[x][y] + ", 이전: " + (int) arr.get(arr.size()-1));
-            //System.out.println();
+        if (arr.size() > 0 && (int) arr.get(arr.size()-1) > numsMat[x][y]) {
+            // System.out.println("탐색종료");
+            // for(int i = 0; i < arr.size(); i++){
+            //     System.out.print(arr.get(i) + " ");
+            // }
+            // System.out.println();
             return arr.size();
         }
 
         int maxCnt = 0;
-        int direction = directionsMat[x][y];
-        int nx, ny;
-        int k = 1;
+        int direction = directionsMat[x][y]; 
 
         arr.add(numsMat[x][y]);
+    
+        int k = 1;
+        int nx = x + dx[direction] * k;
+        int ny = y + dy[direction] * k; 
 
         while (true) {
-            //System.out.println("현재 좌표: " + x + ", " + y);
-        
+            
+            // 범위 벗어난 경우 처리.
+            if(inRange(nx, ny, N)){
+                maxCnt = Math.max(maxCnt, moves(nx, ny, arr));
+            } else {
+                maxCnt = Math.max(maxCnt, arr.size());
+                break;
+            }
+            
+            k++;
             nx = x + dx[direction] * k;
             ny = y + dy[direction] * k;
-            
-            maxCnt = Math.max(maxCnt, moves(nx, ny, arr));
-            k++;
-        }
 
+        }
         arr.remove(arr.size()-1);
+        // System.out.println("완전종료: ");
 
-        System.out.println("완전종료: ");
+        // for(int i = 0; i < arr.size(); i++){
+        //     System.out.print(arr.get(i) + " ");
+        // }
 
-        for(int i = 0; i < arr.size(); i++){
-            System.out.print(arr.get(i) + " ");
-        }
-
-        System.out.println();
-        System.out.println();
-
-        
-        
+        // System.out.println();
+        // System.out.println();
 
         return maxCnt;
     }
@@ -89,7 +86,7 @@ public class Main {
         int r = sc.nextInt() - 1;
         int c = sc.nextInt() - 1;
         int ans = moves(r, c, arr);
-        System.out.println(ans);
+        System.out.println(ans-1);
 
     }
 }
