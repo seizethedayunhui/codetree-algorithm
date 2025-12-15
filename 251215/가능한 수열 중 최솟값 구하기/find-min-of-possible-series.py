@@ -50,7 +50,8 @@ def make_seq(idx, s) :
     #     return
 
     if idx == N :
-        seq.append(s)
+        print(s)
+        exit(0)
         return
 
     for i in range(4, 7) :
@@ -62,4 +63,3 @@ def make_seq(idx, s) :
 
 s = ""
 make_seq(0, s)
-print(int(seq[0]))
