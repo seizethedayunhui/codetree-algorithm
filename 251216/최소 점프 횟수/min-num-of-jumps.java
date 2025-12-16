@@ -8,8 +8,12 @@ public class Main {
     public static final int MAX_JUMP = 100;
 
     // idx = 현재위치
-    // 그렇다면..........................
     public static int jump(int idx){
+        
+        // 범위는 중분히 넘어갈 수 있듬. 
+        if (idx >= N){
+            return MAX_JUMP;
+        }
 
         if (idx > 0 && jumpStamp.get(jumpStamp.size()-1) == N-1){
             // for(int i = 0; i < jumpStamp.size(); i++){
