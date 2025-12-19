@@ -17,7 +17,7 @@ public class Main {
 
     public static void makePer(){
 
-        if (arr.size() == 3){
+        if (arr.size() == N){
             printPer();
             return;
         }
