@@ -5,50 +5,37 @@ public class Main {
     public static int N;
     public static int[][] mat;
 
-    public static ArrayList<Integer> arr = new ArrayList<>();
     public static boolean[] rows;
     public static boolean[] cols;
 
-    public static int calcSum(){
+    public static int findMaxSum(int idx, int cnt, int currentSum){
 
-        int currentSum = 0;
-        for(int i = 0; i < N; i++){
-            currentSum += arr.get(i);
+        if (cnt == N){
+            return currentSum; //합 계산 함수
         }
 
-        return currentSum;
-    }
-
-    public static int findMaxSum(int currentSum){
-
-        if (arr.size() == N){
-            return currentSum; //합 계산 함수
+        if (idx == N || rows[idx]){
+            return -1;
         }
 
         int maxSum = Integer.MIN_VALUE;
 
-        for(int i = 0; i < N; i++){
+        rows[idx] = true;
+
             for(int j = 0; j < N; j++){
 
-                if (rows[i] || cols[j] ){
+                if (cols[j] ){
                     continue;
                 }
 
-                arr.add(mat[i][j]);
-                rows[i] = true;
                 cols[j] = true;
-
-                maxSum = Math.max(maxSum, findMaxSum(currentSum + mat[i][j]));
-
-                arr.remove(arr.size()-1);
-                rows[i] = false;
+                maxSum = Math.max(maxSum, findMaxSum(idx+1, cnt + 1, currentSum + mat[idx][j]));
                 cols[j] = false;
-
             }
-        }
+
+        rows[idx] = false;
 
         return maxSum;
-
     }
 
     public static void main(String[] args) {
@@ -65,7 +52,7 @@ public class Main {
             }
         }
 
-        int ans = findMaxSum(0);
+        int ans = findMaxSum(0, 0, 0);
         System.out.println(ans);
     }
 }
