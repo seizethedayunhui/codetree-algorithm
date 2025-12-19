@@ -9,7 +9,8 @@ public class Main {
     public static int findMinSum(int currentSum, int location, int cnt){
         
         if (cnt == N-1){
-            // System.out.println("들어옴");
+            int c = currentSum + mat[location][0];
+            // System.out.println("들어옴" + ", " + c);
             return currentSum + mat[location][0];
         }
 
@@ -17,7 +18,7 @@ public class Main {
 
         for(int i = 1; i < N; i++){
 
-            if(visited[i]){
+            if(visited[i] || location == i || mat[location][i] == 0){
                 continue;
             }
 
