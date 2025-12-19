@@ -19,10 +19,10 @@ public class Main {
         return currentSum;
     }
 
-    public static int findMaxSum(){
+    public static int findMaxSum(int currentSum){
 
         if (arr.size() == N){
-            return calcSum(); //합 계산 함수
+            return currentSum; //합 계산 함수
         }
 
         int maxSum = Integer.MIN_VALUE;
@@ -38,7 +38,7 @@ public class Main {
                 rows[i] = true;
                 cols[j] = true;
 
-                maxSum = Math.max(maxSum, findMaxSum());
+                maxSum = Math.max(maxSum, findMaxSum(currentSum + mat[i][j]));
 
                 arr.remove(arr.size()-1);
                 rows[i] = false;
@@ -65,7 +65,7 @@ public class Main {
             }
         }
 
-        int ans = findMaxSum();
+        int ans = findMaxSum(0);
         System.out.println(ans);
     }
 }
