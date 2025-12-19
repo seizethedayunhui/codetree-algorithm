@@ -9,16 +9,19 @@ public class Main {
     public static int findMinSum(int currentSum, int location, int cnt){
         
         if (cnt == N-1){
-            int c = currentSum + mat[location][0];
-            // System.out.println("들어옴" + ", " + c);
-            return currentSum + mat[location][0];
+
+            if(mat[location][0] == 0){
+                return Integer.MAX_VALUE;
+            } else {
+                return currentSum + mat[location][0];
+            }
         }
 
         int minSum = Integer.MAX_VALUE;
 
         for(int i = 1; i < N; i++){
 
-            if(visited[i] || location == i || mat[location][i] == 0){
+            if(visited[i] || mat[location][i] == 0){
                 continue;
             }
 
