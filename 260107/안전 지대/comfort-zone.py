@@ -1,3 +1,6 @@
+import sys
+sys.setrecursionlimit(100000)
+
 N, M = map(int, input().split())
 mat = [ list(map(int, input().split())) for _ in range(N) ]
 visited = [ [ False for _ in range(M)] for _ in range(N) ]
@@ -42,7 +45,7 @@ for k in range(1, 100):
     elif safe_section_cnt > max_cnt :
         max_cnt = safe_section_cnt
         min_k = k
-        
+
     visited = [ [ False for _ in range(M)] for _ in range(N) ]
 
 print(min_k, max_cnt)
