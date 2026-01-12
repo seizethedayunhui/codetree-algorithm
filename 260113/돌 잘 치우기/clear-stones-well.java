@@ -32,46 +32,45 @@ public class Main {
         // }
         // System.out.println();
 
-        int currentMax = Integer.MIN_VALUE;
+        int cnt = 0;
+        visited = new boolean[N][N];
 
         for(int k = 0; k < K; k++){
 
-            int cnt = 1;
-            visited = new boolean[N][N];
             int[] point = points.get(k);
-            visited[point[0]][point[1]] = true;
 
-            q.offer(point);
+            if (canGo(point[0], point[1])){
 
-            while(!q.isEmpty()){
+                visited[point[0]][point[1]] = true;
+                q.offer(point);
+                cnt++;
 
-            
-                int[] e = q.poll();
-                int cx = e[0];
-                int cy = e[1];
+                while(!q.isEmpty()){
 
-                int nx, ny;
+                    
+                    int[] e = q.poll();
+                    int cx = e[0];
+                    int cy = e[1];
 
-                for(int i = 0; i < 4; i++){
-                    nx = cx + dx[i];
-                    ny = cy + dy[i];
+                    int nx, ny;
 
-                    if (canGo(nx, ny)){
-                        cnt++;
-                        visited[nx][ny] = true;
-                        int[] ne = {nx, ny};
-                        q.offer(ne);
+                    for(int i = 0; i < 4; i++){
+                        nx = cx + dx[i];
+                        ny = cy + dy[i];
+
+                        if (canGo(nx, ny)){
+                            cnt++;
+                            visited[nx][ny] = true;
+                            int[] ne = {nx, ny};
+                            q.offer(ne);
+                        }
                     }
+
                 }
-
             }
-
-            currentMax = Math.max(currentMax, cnt);
-
         }
 
-        return currentMax;
-
+        return cnt;
     }
 
     public static ArrayList<int[]> rocks = new ArrayList<>();
