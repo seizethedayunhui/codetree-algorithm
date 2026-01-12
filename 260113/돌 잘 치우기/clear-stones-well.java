@@ -47,7 +47,6 @@ public class Main {
 
                 while(!q.isEmpty()){
 
-                    
                     int[] e = q.poll();
                     int cx = e[0];
                     int cy = e[1];
@@ -109,7 +108,6 @@ public class Main {
             // 선택하지 않는 경우(원래대로 복귀)
             selectedRocks.remove(selectedRocks.size()-1);
             mat[x][y] = false;
-            maxCnt = Math.max(maxCnt, backTracking(idx+1));
         }
 
         return maxCnt;
