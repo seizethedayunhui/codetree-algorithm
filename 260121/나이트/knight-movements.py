@@ -23,13 +23,17 @@ dx = [ -2, -1, 1, 2, 2, 1, -2, -1 ]
 dy = [ 1, 2, 2, 1, -1, -2, -1, -2 ]
 
 def reach_final(x, y):
-    
+
     q.append((x-1, y-1))
     path = -1
 
     while q:
         x, y = q.popleft()
         prev_step = step[x][y] 
+
+        if x == r2-1 and y == c2-1:
+            path = step[x][y]
+            break
 
         for i in range(8):
             nx = x + dx[i]
@@ -38,9 +42,7 @@ def reach_final(x, y):
             if can_go(nx, ny):
                 push(nx, ny, prev_step)
 
-                if nx == r2-1 and ny == c2-1:
-                    path = step[nx][ny]
-                    break
+
 
     return path
 
