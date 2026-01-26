@@ -5,26 +5,30 @@ q = deque()
 
 def calc(idx, n):
 
+    result = -1
+
     if idx == 0:
-        return n-1
+        result = n-1
 
     elif idx == 1:
-        return n+1
+        result = n+1
     
     elif idx == 2:
         if not n % 2:
-            return n // 2
+           result = n // 2
     
     else :
         if not n % 3 :
-            return n // 3
+            result = n // 3
 
-    return n
+    return result
 
 def bfs(N):
 
     q = deque()
     cnt = 0
+
+    visited = [False] * (N + 2)
 
     q.append((N, cnt))
 
@@ -38,9 +42,11 @@ def bfs(N):
 
             next_n = calc(i, n)
 
-            if next_n != n:
+            if 1 <= next_n <= N + 1 and not visited[next_n]:
                 q.append((next_n, current_cnt+1))
+                visited[next_n] = True
 
 ans = bfs(N)
 print(ans)
             
+
