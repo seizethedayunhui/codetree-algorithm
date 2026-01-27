@@ -18,7 +18,7 @@ def step(n):
     
     return dp[n]
 
-ans = step(N)
+ans = step(N) % 10007
 print(ans)
     
     
