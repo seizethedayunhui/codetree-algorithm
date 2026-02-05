@@ -9,19 +9,19 @@ public class Main {
         int[] dp = new int[N+1];
 
         dp[0] = 1;
-        dp[1] = 1;
-        dp[2] = 2;
 
-        for(int i = 3; i < N+1; i++){
+        for(int i = 1; i < N+1; i++){
 
-            int sum = 0;
-            for(int k = 0; k < i; k++){
-                sum += (dp[i-(k+1)] * dp[k]);
+            if (i <= 2){
+                dp[i] = i;
+            } else{
+                int sum = 0;
+                for(int k = 0; k < i; k++){
+                    sum += (dp[i-(k+1)] * dp[k]);
+                }
+                dp[i] = sum;
             }
-
-            dp[i] = sum;
         }
-
         System.out.println(dp[N]);
     }
 }
