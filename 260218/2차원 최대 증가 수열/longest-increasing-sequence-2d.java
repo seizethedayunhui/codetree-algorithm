@@ -27,12 +27,12 @@ public class Main {
         for(int x = 0; x < N; x++){
             for(int y = 0; y < M; y++){
 
-                for(int r = 0; r <= x; r++){
-                    for(int c = 0; c <= y; c++){
+                for(int r = 0; r < x; r++){
+                    for(int c = 0; c < y; c++){
 
-                        if((r == x && c == y) || (r == x - 1 && c == y) || (r == x && c == y-1)){
-                            continue;
-                        }
+                        // if((r == x && c == y) || (r == x - 1 && c == y) || (r == x && c == y-1)){
+                        //     continue;
+                        // }
 
                         if( mat[x][y] > mat[r][c] && dp[r][c] != MIN_V){
                             dp[x][y] = Math.max(dp[x][y], dp[r][c] + 1);
@@ -44,6 +44,7 @@ public class Main {
 
             }
         }
+
         System.out.println(ans);
     }
 }
