@@ -1,13 +1,16 @@
 N = int(input())
 
 works = [ list(map(int, input().split())) for _ in range(N)]
+works.sort(lambda x : x[1])
 
 dp = [0 for _ in range(N)]
 
 dp[0] = works[0][-1]
+#print(works)
 
 def check(s1, e1, s2, e2):
-    return (s2 <= s1 <= e2)
+    #print("들어옴")
+    return (s1 <= e2)
 
 for i in range(1, N):
 
@@ -34,4 +37,5 @@ ans = dp[N-1]
 print(ans)
 
         
+
 
