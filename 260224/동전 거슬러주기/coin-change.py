@@ -13,4 +13,8 @@ for i in range(1, M+1):
             dp[i] = min(dp[i], dp[i-coins[j]] + 1)
 
 ans = dp[M]
+
+if ans == INT_MAX:
+    ans = -1
+    
 print(ans)
