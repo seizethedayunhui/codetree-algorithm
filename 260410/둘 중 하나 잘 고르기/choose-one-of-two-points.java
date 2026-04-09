@@ -1,5 +1,6 @@
 import java.util.*;
 public class Main {
+    public static int MIN_V = Integer.MIN_VALUE;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -13,8 +14,13 @@ public class Main {
             reds[i] = red;
             blues[i] = blue;
         }
-        
+    
         int[][] dp = new int[2*n + 1][n+1];
+        for(int i = 0; i < 2 * n; i++){
+            for(int j = 0; j < n+1; j++){
+                dp[i][j] = MIN_V;
+            }
+        }
 
         dp[0][0] = 0;
 
